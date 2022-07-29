@@ -1,4 +1,4 @@
-# celestial-frontier-fleet-builder
+# celestial-frontier-web-app
 
 ## Project setup
 ```
