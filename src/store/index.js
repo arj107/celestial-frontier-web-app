@@ -22,7 +22,7 @@ const store = new Vuex.Store({
     },
 
     // CONFIGURATIONS
-    selectedConfigurationPanel: null,
+    selectedConfigurationPanel: [],
     configurationsCondensedView: true,
     configurationsTargetManeuverability: 0.1,
     configurationsTargetArmorKineticResistance: 0.5,

@@ -6,7 +6,217 @@
                     <span class="subtitle-1 font-weight-bold">{{battlecruiserConfiguration.Name}}</span>
                 </v-flex>
                 <v-flex shrink>
-                    <v-chip >{{battlecruiserConfiguration.BattlecruiserClass}} Class</v-chip>
+                    <v-menu
+                        open-on-click allow-overflow
+                        :close-on-content-click="false" nudge-bottom="130"
+                        offset-y content-class="rounded-xl elevation-20"
+                        :z-index="10000" left nudge-left="40"
+                    >
+                        <template v-slot:activator="{ on, attrs, value }">
+                            <v-chip 
+                                :color="value ? 'cfPrimary' : ''" v-on="on" v-bind="attrs" 
+                                :style="`pointer-events:initial !important`"
+                                class="pl-1 pr-1"
+                            >
+                                <v-icon>mdi-dots-horizontal</v-icon>
+                            </v-chip>
+                        </template>
+                        <v-card outlined class="rounded-xl" elevation="20">
+                            <v-container fluid grid-list-md>
+                                <v-layout wrap>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Hull Class</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.BattlecruiserClass }} Class
+                                                </v-chip>
+                                            </template>
+                                            <battlecruiser-overview
+                                                :battlecruiser="battlecruiserConfiguration.Battlecruiser"
+                                                :allowClick="false"
+                                            ></battlecruiser-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Armor</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.ArmorTitle }}
+                                                </v-chip>
+                                            </template>
+                                            <armor-overview
+                                                :armor="battlecruiserConfiguration.Armor"
+                                                :allowClick="false"
+                                            ></armor-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">PDS</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.PointDefenseSystemTitle }}
+                                                </v-chip>
+                                            </template>
+                                            <point-defense-system-overview
+                                                :pointDefenseSystem="battlecruiserConfiguration.PointDefenseSystem"
+                                                :allowClick="false"
+                                            ></point-defense-system-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Fuel System</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.FuelSystemTitle }}
+                                                </v-chip>
+                                            </template>
+                                            <fuel-system-overview
+                                                :fuelSystem="battlecruiserConfiguration.FuelSystem"
+                                                :allowClick="false"
+                                            ></fuel-system-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Thruster</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.ThrusterTitle }}
+                                                </v-chip>
+                                            </template>
+                                            <thruster-overview
+                                                :thruster="battlecruiserConfiguration.Thruster"
+                                                :allowClick="false"
+                                            ></thruster-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Weapon Frame 1</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.WeaponFrame1Title }}
+                                                </v-chip>
+                                            </template>
+                                            <weapon-frame-overview
+                                                :weaponFrame="battlecruiserConfiguration.WeaponFrame1"
+                                                :allowClick="false"
+                                            ></weapon-frame-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Payload 1</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.Payload1Title }}
+                                                </v-chip>
+                                            </template>
+                                            <payload-overview
+                                                :payload="battlecruiserConfiguration.Payload1"
+                                                :allowClick="false"
+                                            ></payload-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Weapon Frame 2</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.WeaponFrame2Title }}
+                                                </v-chip>
+                                            </template>
+                                            <weapon-frame-overview
+                                                :weaponFrame="battlecruiserConfiguration.WeaponFrame2"
+                                                :allowClick="false"
+                                            ></weapon-frame-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                    <v-flex shrink>
+                                        <v-menu 
+                                            open-on-hover allow-overflow max-width="500px"
+                                            :close-on-content-click="false" nudge-bottom="3"
+                                            offset-y content-class="rounded-xl elevation-20"
+                                            :z-index="10000"
+                                        >
+                                            <template v-slot:activator="{ on, attrs, value }">
+                                                <div class="caption font-weight-bold">Payload 2</div>
+                                                <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                    :color="value  ? 'cfPrimary' : ''"
+                                                >
+                                                    {{ battlecruiserConfiguration.Payload2Title }}
+                                                </v-chip>
+                                            </template>
+                                            <payload-overview
+                                                :payload="battlecruiserConfiguration.Payload2"
+                                                :allowClick="false"
+                                            ></payload-overview>
+                                        </v-menu>  
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card>
+                    </v-menu>
                 </v-flex>
                 <v-flex shrink class="pl-0">
                     <v-chip class="font-weight-bold">{{`${battlecruiserConfiguration.TotalModulePointsUsage}/${battlecruiserConfiguration.BattlecruiserModulePointLimit}`}}</v-chip>
@@ -175,12 +385,25 @@
 
 <script>
 import { mapState } from 'vuex';
+import BattlecruiserOverview from '../../components/Battlecruiser/BattlecruiserOverview.vue';
+import ArmorOverview from '../../components/Armor/ArmorOverview.vue';
+import PointDefenseSystemOverview from '../../components/PointDefenseSystem/PointDefenseSystemOverview.vue';
+import FuelSystemOverview from '../../components/FuelSystem/FuelSystemOverview.vue';
+import ThrusterOverview from '../../components/Thruster/ThrusterOverview.vue';
+import WeaponFrameOverview from '../../components/WeaponFrame/WeaponFrameOverview.vue';
+import PayloadOverview from '../../components/Payload/PayloadOverview.vue';
 
 export default {
     name: "BattlecruiserConfigurationOverview",
 
     components: {
-
+        BattlecruiserOverview,
+        ArmorOverview,
+        PointDefenseSystemOverview,
+        FuelSystemOverview,
+        ThrusterOverview,
+        WeaponFrameOverview,
+        PayloadOverview,
     },
 
     props: {

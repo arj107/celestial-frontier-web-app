@@ -14,7 +14,7 @@
                                         clearable outlined hide-details rounded dense
                                         prepend-icon="mdi-magnify" label="Search" color="cfPrimary"
                                     ></v-text-field>
-                                </v-flex>
+                                </v-flex> 
                                 <v-flex grow>
                                     <v-combobox v-model="$store.state.battlecruiserConfigurationsSortBy"
                                         flat outlined hide-details rounded dense clearable
@@ -140,18 +140,217 @@
                                             <td :align="`${headers.find(h => h.value === 'BattlecruiserDescription').align}`"
                                                 :style="headers.find(h => h.value === 'BattlecruiserDescription').divider ? `${$vuetify.theme.dark ? 'border-right: 1px solid rgba(255,255,255,0.12)' : 'border-right: 1px solid rgba(0,0,0,0.12)'}` : ''"
                                             >
-                                                <v-tooltip top max-width="300" color="black" open-delay="700" content-class="rounded-xl">
-                                                    <template v-slot:activator="{ on, attrs }">
+                                                <v-menu
+                                                    open-on-click allow-overflow
+                                                    :close-on-content-click="false" nudge-bottom="3"
+                                                    offset-y content-class="rounded-xl elevation-20"
+                                                    :z-index="10000" left nudge-left="40"
+                                                >
+                                                    <template v-slot:activator="{ on, attrs, value }">
                                                         <v-chip 
-                                                            color="grey" x-small v-on="on" v-bind="attrs" 
+                                                            :color="value ? 'cfPrimary' : 'grey'" small v-on="on" v-bind="attrs" 
                                                             :style="`pointer-events:initial !important`"
                                                             class="pl-1 pr-1"
                                                         >
                                                             <v-icon>mdi-dots-horizontal</v-icon>
                                                         </v-chip>
                                                     </template>
-                                                    <span class="subtitle-2 font-weight-normal font-italic">{{item.BattlecruiserDescription}}</span>
-                                                </v-tooltip>
+                                                    <v-card outlined class="rounded-xl" elevation="20">
+                                                        <v-container fluid grid-list-md>
+                                                            <v-layout wrap>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Hull Class</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.BattlecruiserClass }} Class
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <battlecruiser-overview
+                                                                            :battlecruiser="item.Battlecruiser"
+                                                                            :allowClick="false"
+                                                                        ></battlecruiser-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Armor</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.ArmorTitle }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <armor-overview
+                                                                            :armor="item.Armor"
+                                                                            :allowClick="false"
+                                                                        ></armor-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">PDS</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.PointDefenseSystemTitle }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <point-defense-system-overview
+                                                                            :pointDefenseSystem="item.PointDefenseSystem"
+                                                                            :allowClick="false"
+                                                                        ></point-defense-system-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Fuel System</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.FuelSystemTitle }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <fuel-system-overview
+                                                                            :fuelSystem="item.FuelSystem"
+                                                                            :allowClick="false"
+                                                                        ></fuel-system-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Thruster</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.ThrusterTitle }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <thruster-overview
+                                                                            :thruster="item.Thruster"
+                                                                            :allowClick="false"
+                                                                        ></thruster-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Weapon Frame 1</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.WeaponFrame1Title }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <weapon-frame-overview
+                                                                            :weaponFrame="item.WeaponFrame1"
+                                                                            :allowClick="false"
+                                                                        ></weapon-frame-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Payload 1</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.Payload1Title }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <payload-overview
+                                                                            :payload="item.Payload1"
+                                                                            :allowClick="false"
+                                                                        ></payload-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Weapon Frame 2</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.WeaponFrame2Title }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <weapon-frame-overview
+                                                                            :weaponFrame="item.WeaponFrame2"
+                                                                            :allowClick="false"
+                                                                        ></weapon-frame-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                                <v-flex shrink>
+                                                                    <v-menu 
+                                                                        open-on-hover allow-overflow max-width="500px"
+                                                                        :close-on-content-click="false" nudge-bottom="3"
+                                                                        offset-y content-class="rounded-xl elevation-20"
+                                                                        :z-index="10000"
+                                                                    >
+                                                                        <template v-slot:activator="{ on, attrs, value }">
+                                                                            <div class="caption font-weight-bold">Payload 2</div>
+                                                                            <v-chip class="subtitle-1 font-weight-bold" v-on="on" v-bind="attrs"
+                                                                                :color="value  ? 'cfPrimary' : ''"
+                                                                            >
+                                                                                {{ item.Payload2Title }}
+                                                                            </v-chip>
+                                                                        </template>
+                                                                        <payload-overview
+                                                                            :payload="item.Payload2"
+                                                                            :allowClick="false"
+                                                                        ></payload-overview>
+                                                                    </v-menu>  
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </v-container>
+                                                    </v-card>
+                                                </v-menu>
                                             </td>
                                         </tr>
                                     </template>
@@ -321,13 +520,27 @@ import { UsersRepository } from '../../repositories';
 import { NewFleet } from '../../models/Fleets/NewFleet';
 import { BattlecruiserConfigurationModel } from '../../models/Configurations/BattlecruiserConfigurationModel';
 import BattlecruiserConfigurationOverview from '../../components/Configurations/BattlecruiserConfigurationOverview.vue';
+import BattlecruiserOverview from '../../components/Battlecruiser/BattlecruiserOverview.vue';
+import ArmorOverview from '../../components/Armor/ArmorOverview.vue';
+import PointDefenseSystemOverview from '../../components/PointDefenseSystem/PointDefenseSystemOverview.vue';
+import FuelSystemOverview from '../../components/FuelSystem/FuelSystemOverview.vue';
+import ThrusterOverview from '../../components/Thruster/ThrusterOverview.vue';
+import WeaponFrameOverview from '../../components/WeaponFrame/WeaponFrameOverview.vue';
+import PayloadOverview from '../../components/Payload/PayloadOverview.vue';
 
 
 export default {
     name: 'UserFleetList',
 
     components: {
-        BattlecruiserConfigurationOverview        
+        BattlecruiserConfigurationOverview,
+        BattlecruiserOverview,
+        ArmorOverview,
+        PointDefenseSystemOverview,
+        FuelSystemOverview,
+        ThrusterOverview,
+        WeaponFrameOverview,
+        PayloadOverview,
     },
 
     created() {

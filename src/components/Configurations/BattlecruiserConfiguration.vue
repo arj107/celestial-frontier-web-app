@@ -206,7 +206,7 @@
                     <v-flex xs12>
                         <v-layout wrap>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -239,7 +239,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex  xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -272,7 +272,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -305,7 +305,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -338,7 +338,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -368,7 +368,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -401,7 +401,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
@@ -431,7 +431,7 @@
                                 </v-tooltip>
                             </v-flex>
                             <v-flex xs12 sm6 md4 lg4 xl3 class="text-center pb-0">
-                                <v-tooltip bottom max-width="300" color="black" open-delay="700">
+                                <v-tooltip bottom max-width="300" color="black" open-delay="700" content-class="rounded-xl">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-chip class="pr-1" v-on="on" v-bind="attrs" color="transparent">
                                             <v-layout align-center>
