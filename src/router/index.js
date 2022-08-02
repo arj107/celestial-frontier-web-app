@@ -59,43 +59,56 @@ const routes = [
     },
   },
   {
-    path: "/configurations",
-    name: "Configurations",
-    component: () =>
-      import(
-        /* webpackChunkName: "home" */ "../views/Configurations/Configurations.vue"
-      ),
-    children: [
-      {
         path: "/configurations",
-        name: "User Configurations List",
+        name: "Configurations",
         component: () =>
-          import(
-            /* webpackChunkName: "home" */ "../views/Configurations/UserConfigurationsList.vue"
-          ),
+            import(
+                /* webpackChunkName: "home" */ "../views/Configurations/Configurations.vue"
+            ),
+        children: [
+            {
+                path: "/configurations",
+                name: "User Configurations List",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserConfigurationsList.vue"
+                    ),
+                meta: {
+                    authRequired: true,
+                },
+            },
+            {
+                path: "/configurations/battlecruisers/:BattlecruiserConfigurationGuid",
+                name: "User Battlecruiser Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserBattlecruiserConfiguration.vue"
+                    ),
+                props: (route) => ({
+                battlecruiserConfigurationGuid: route.params.BattlecruiserConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
+            {
+                path: "/configurations/destroyers/:DestroyerConfigurationGuid",
+                name: "User Destroyer Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserDestroyerConfiguration.vue"
+                    ),
+                props: (route) => ({
+                    destroyerConfigurationGuid: route.params.DestroyerConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
+        ],
         meta: {
-          authRequired: true,
+            authRequired: true,
         },
-      },
-      {
-        path: "/configurations/battlecruisers/:BattlecruiserConfigurationGuid",
-        name: "User Battlecruiser Configuration",
-        component: () =>
-          import(
-            /* webpackChunkName: "home" */ "../views/Configurations/UserBattlecruiserConfiguration.vue"
-          ),
-        props: (route) => ({
-          battlecruiserConfigurationGuid:
-            route.params.BattlecruiserConfigurationGuid || null,
-        }),
-        meta: {
-          authRequired: true,
-        },
-      },
-    ],
-    meta: {
-      authRequired: true,
-    },
   },
   {
     path: "/your-profile",

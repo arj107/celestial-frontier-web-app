@@ -29,10 +29,8 @@ const store = new Vuex.Store({
     configurationsTargetArmorEnergyResistance: 0.5,
     configurationsWeaponModelChartsHeight: 250,
     configurationsWeaponDamageChartsHeight: 250,
-
-    battlecruiserConfigurationSelectedComponentPanels: [],
-    battlecruiserConfigurationStatsPinned: false,
-    battlecruiserConfigurationWeaponChartsPinned: false,
+    configurationsShowWeaponModelCharts: true,
+    configurationsShowWeaponDamageCharts: true,
     itemsPerPageOptions: [
         {
             text: "3",
@@ -55,7 +53,11 @@ const store = new Vuex.Store({
             value: -1,
         },
     ],
+
     editingBattlecruiserConfiguration: null,
+    battlecruiserConfigurationSelectedComponentPanels: [],
+    battlecruiserConfigurationStatsPinned: false,
+    battlecruiserConfigurationWeaponChartsPinned: false,
     battlecruiserConfigurationsSortOptions: [
         {
             text: "None",
@@ -460,8 +462,6 @@ const store = new Vuex.Store({
     battlecruiserConfigurationsSortBy: "",
     battlecruiserConfigurationsSortDesc: true,
     battlecruisersShowOnlyFeasible: false,
-    battlecruiserConfigurationsShowWeaponModelCharts: true,
-    battlecruiserConfigurationsShowWeaponDamageCharts: true,
 
     // COMPONENTS
     battlecruisersSortOptions: [
@@ -700,6 +700,712 @@ const store = new Vuex.Store({
     battlecruisersSearch: "",
     battlecruisersSortBy: "",
     battlecruisersSortDesc: true,
+
+
+    editingDestroyerConfiguration: null,
+    destroyerConfigurationSelectedComponentPanels: [],
+    destroyerConfigurationStatsPinned: false,
+    destroyerConfigurationWeaponChartsPinned: false,
+    destroyerConfigurationsSortOptions: [
+        {
+            text: "None",
+            value: "",
+            icons: [],
+        },
+        {
+            text: "Name",
+            value: "Name",
+            icons: [],
+        },
+        {
+            text: "Class",
+            value: "DestroyerClass",
+            icons: [],
+        },
+        {
+            text: "Vigor Cost",
+            value: "DestroyerBaseVigorCost",
+            icons: [
+                {
+                    icon: "mdi-triangle",
+                    size: null,
+                    iconColor: "orange darken-2",
+                    cssClass: 'vigor-icon'
+                },
+            ],
+        },
+        {
+            text: "Module Points Usage",
+            value: "TotalModulePointsUsage",
+            icons: [],
+        },
+        {
+            text: "Module Point Limit",
+            value: "DestroyerModulePointLimit",
+            icons: [],
+        },
+        {
+            text: "Hull Mass",
+            value: "HullMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+    ],
+    destroyerConfigurationsHeaders: [
+        {
+            text: "Name",
+            value: "Name",
+            description: null,
+            align: 'left',
+            width: 200,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Class",
+            value: "Class",
+            description: "Class describes the model/design of the hull.",
+            align: 'left',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Vigor Cost",
+            value: "DestroyerBaseVigorCost",
+            description: "Vigor Cost describes the amout of Vigor required to deploy this spaceship into the battlefield.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-triangle",
+                    size: null,
+                    iconColor: "orange darken-2",
+                    cssClass: 'vigor-icon'
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "MPU/MPL",
+            value: "TotalModulePointsUsage",
+            description: "Total Module Points Usage describes how many module points of available capacity have been used.",
+            align: 'center',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Mass",
+            value: "DestroyerHullMass",
+            description: "Hull Mass describes the overall mass of the Destroyer's Hull.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            description: "Total Mass describes the mass of the Destroyer's hull plus the mass of all attached components.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            description: "Total Crew describes the crew cost of the Destroyer plus the crew cost of all attached modules.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            description: "Total Heat Capacity describes the amount of heat units the entire ship can withstand before becomming overheated.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            description: "Maneuverability describes how quickly the entire ship can accelerate given its Total Mass and its Thruster's Thrust.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            description: "Fuel Consumption Rate describes how much fuel it costs for the ship to move 1 tile.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            description: "Fuel Capacity describes the maximimum amount of fuel the ship's Fuel System can contian.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            description: "Fuel Regeneration Rate describes how much fuel the ship's Fuel System restores per turn.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Description",
+            value: "DestroyerDescription",
+            description: null,
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: null,
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: false,
+            sortable: false,
+        },
+    ],
+    destroyerConfigurationsSelectedComponentPanel: null,
+    destroyerConfigurationsItemsPerPage: 6,
+    destroyerConfigurationsPageSync: 1,
+    destroyerConfigurationsPageCount: 1,
+    destroyerConfigurationsSearch: "",
+    destroyerConfigurationsSortBy: "",
+    destroyerConfigurationsSortDesc: true,
+    destroyersShowOnlyFeasible: false,
+
+    // COMPONENTS
+    destroyersSortOptions: [
+        {
+            text: "None",
+            value: "",
+            icons: [],
+        },
+        {
+            text: "Class",
+            value: "Class",
+            icons: [],
+        },
+        {
+            text: "Vigor Cost",
+            value: "BaseVigorCost",
+            icons: [
+                {
+                    icon: "mdi-triangle",
+                    size: null,
+                    iconColor: "orange darken-2",
+                    cssClass: 'vigor-icon'
+                },
+            ],
+        },
+        {
+            text: "Module Point Limit",
+            value: "ModulePointLimit",
+            icons: [],
+        },
+        {
+            text: "Hull Mass",
+            value: "HullMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Crew Cost",
+            value: "BaseCrewCost",
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Heat Capacity",
+            value: "HeatCapacity",
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Hull Health",
+            value: "BaseHullHealth",
+            icons: [
+                {
+                    icon: "mdi-heart",
+                    size: null,
+                    iconColor: "pink",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "PDS Power Level",
+            value: "PointDefenseSystemPowerLevelText",
+            icons: [
+                {
+                    icon: "mdi-lightning-bolt",
+                    size: null,
+                    iconColor: "yellow",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Weapon Power Level",
+            value: "WeaponPowerLevelText",
+            icons: [
+                {
+                    icon: "mdi-lightning-bolt",
+                    size: null,
+                    iconColor: "yellow",
+                    cssClass: null
+                },
+            ],
+        },
+    ],
+    destroyersHeaders: [
+        {
+            text: "Class",
+            value: "Class",
+            description: "Class describes the model/design of the hull.",
+            align: 'left',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Vigor Cost",
+            value: "BaseVigorCost",
+            description: "Vigor Cost describes the amout of Vigor required to deploy this spaceship into the battlefield.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-triangle",
+                    size: null,
+                    iconColor: "orange darken-2",
+                    cssClass: 'vigor-icon'
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "MP",
+            value: "ModulePointLimit",
+            description: "Module Point Limit describes the upper limit for the total module points cost for all equipped components.",
+            align: 'center',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Mass",
+            value: "HullMass",
+            description: "Mass describes the overall mass of the Destroyer's Hull.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Crew Cost",
+            value: "BaseCrewCost",
+            description: "Crew Cost describes the how much crew the Destroyer needs to operate.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Heat Capacity",
+            value: "HeatCapacity",
+            description: "Heat Capacity describes the amount of heat units the hull can withstand. It contributes to the Total Heat Capacity of the spaceship.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Health",
+            value: "BaseHullHealth",
+            description: "Hull Health describes how much total damage the Destroyer can take before it is destroyed.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-heart",
+                    size: null,
+                    iconColor: "pink",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "PDS",
+            value: "PointDefenseSystemPowerLevelText",
+            description: "PDS Power Level describes the maximum power level of PDS this hull is compatible with.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-lightning-bolt",
+                    size: null,
+                    iconColor: "yellow",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Wpn",
+            value: "WeaponPowerLevelText",
+            description: "Weapon Power Level describes the maximum power level of Weapon Frame this hull is compatible with.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-lightning-bolt",
+                    size: null,
+                    iconColor: "yellow",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Description",
+            value: "Description",
+            description: null,
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: null,
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: false,
+            sortable: false,
+        },
+    ],
+    destroyersItemsPerPage: 6,
+    destroyersPageSync: 1,
+    destroyersPageCount: 1,
+    destroyersSearch: "",
+    destroyersSortBy: "",
+    destroyersSortDesc: true,
     armorsSortOptions: [
         {
             text: "None",

@@ -201,11 +201,11 @@
                                     <v-container fluid>
                                         <v-layout wrap align-center>
                                             <v-flex xs12>
-                                                <v-switch v-model="$store.state.battlecruiserConfigurationsShowWeaponModelCharts"
+                                                <v-switch v-model="$store.state.configurationsShowWeaponModelCharts"
                                                     hide-details color="cfPrimary" dense class="mt-0" label="Model Charts"
                                                 ></v-switch>
                                             </v-flex>
-                                            <v-flex xs12 class="pr-2" v-show="$store.state.battlecruiserConfigurationsShowWeaponModelCharts">
+                                            <v-flex xs12 class="pr-2" v-show="$store.state.configurationsShowWeaponModelCharts">
                                                 <v-slider 
                                                     v-model="$store.state.configurationsWeaponModelChartsHeight" 
                                                     color="cfPrimary" label="Height"
@@ -335,6 +335,9 @@ export default {
         border-bottom-right-radius: 24px !important;
     }
     
+    .vigor-icon {
+        transform: rotate(180deg);
+    }
     
     /* for v-card components using rounded-xl class that specify an @click attribute  */
     .v-card--link:focus:before {

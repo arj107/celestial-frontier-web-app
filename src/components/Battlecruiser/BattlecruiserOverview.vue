@@ -8,9 +8,6 @@
                 <v-flex shrink class="pb-0">
                     <v-chip class="font-weight-bold">{{battlecruiser.ModulePointLimit}}</v-chip>
                 </v-flex>
-                <!-- <v-flex shrink class="pl-0 pb-0">
-                    <v-chip >{{armor.SpaceshipType.Text}} Armor</v-chip>
-                </v-flex> -->
             </v-layout>
             <v-layout wrap align-center class="pa-0 pt-2">
                 <v-tooltip bottom max-width="300" color="black" open-delay="700">
@@ -121,7 +118,6 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { BattlecruiserModel } from '../../models/Battlecruiser/BattlecruiserModel';
 
 export default {
     name: "BattlecruiserOverview",
@@ -169,9 +165,6 @@ export default {
         ...mapState([
             'validationRules',
         ]),
-        // battlecruiserOverview() {
-        //     return new BattlecruiserModel(this.battlecruiser);
-        // }
     },
 
     methods: {

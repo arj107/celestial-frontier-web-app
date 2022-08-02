@@ -175,12 +175,6 @@
                             </v-card>
                         </v-dialog>
                     </v-flex>
-                    <!-- <v-flex shrink>
-                        <v-btn small fab @click.stop="$store.state.configurationsCondensedView = !$store.state.configurationsCondensedView" top right elevation="3">
-                            <v-icon v-if="$store.state.configurationsCondensedView">mdi-view-module</v-icon>
-                            <v-icon v-else>mdi-reorder-horizontal</v-icon>
-                        </v-btn>
-                    </v-flex> -->
                 </v-layout>
                 <v-layout wrap align-top>
                     <v-flex grow class="pb-0">
@@ -3537,7 +3531,7 @@
                                             <v-divider/>
                                             <v-layout wrap align-center class="pa-4">
                                                 <v-flex xs12>
-                                                    <v-switch v-model="$store.state.battlecruiserConfigurationsShowWeaponModelCharts"
+                                                    <v-switch v-model="$store.state.configurationsShowWeaponModelCharts"
                                                         hide-details color="cfPrimary" dense class="mt-0" label="Model Charts"
                                                     ></v-switch>
                                                 </v-flex>
@@ -3553,7 +3547,7 @@
                                             <v-divider/>
                                             <v-layout wrap align-center class="pa-4">
                                                 <v-flex xs12>
-                                                    <v-switch v-model="$store.state.battlecruiserConfigurationsShowWeaponDamageCharts"
+                                                    <v-switch v-model="$store.state.configurationsShowWeaponDamageCharts"
                                                         hide-details color="cfPrimary" dense class="mt-0" label="Damage Charts"
                                                     ></v-switch>
                                                 </v-flex>
@@ -3582,13 +3576,13 @@
                                     {{`${this.$store.state.editingBattlecruiserConfiguration.WeaponFrame1.Title} & ${this.$store.state.editingBattlecruiserConfiguration.Payload1.Title}`}}
                                 </span>
                             </v-flex>
-                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.battlecruiserConfigurationsShowWeaponModelCharts" v-if="!isWeaponFrame1Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame1) && !isPayload1Disabled($store.state.editingBattlecruiserConfiguration.Payload1)">
+                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.configurationsShowWeaponModelCharts" v-if="!isWeaponFrame1Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame1) && !isPayload1Disabled($store.state.editingBattlecruiserConfiguration.Payload1)">
                                 <weapon-model-chart
                                     :weaponFrame="$store.state.editingBattlecruiserConfiguration.WeaponFrame1"
                                     :payload="$store.state.editingBattlecruiserConfiguration.Payload1"
                                 ></weapon-model-chart>
                             </v-flex>
-                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.battlecruiserConfigurationsShowWeaponDamageCharts" v-if="!isWeaponFrame1Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame1) && !isPayload1Disabled($store.state.editingBattlecruiserConfiguration.Payload1)">
+                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.configurationsShowWeaponDamageCharts" v-if="!isWeaponFrame1Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame1) && !isPayload1Disabled($store.state.editingBattlecruiserConfiguration.Payload1)">
                                 <weapon-damage-chart
                                     :weaponFrame="$store.state.editingBattlecruiserConfiguration.WeaponFrame1"
                                     :payload="$store.state.editingBattlecruiserConfiguration.Payload1"
@@ -3609,13 +3603,13 @@
                                     {{`${this.$store.state.editingBattlecruiserConfiguration.WeaponFrame2.Title} & ${this.$store.state.editingBattlecruiserConfiguration.Payload2.Title}`}}
                                 </span>
                             </v-flex>
-                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.battlecruiserConfigurationsShowWeaponModelCharts" v-if="!isWeaponFrame2Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame2) && !isPayload2Disabled($store.state.editingBattlecruiserConfiguration.Payload2)">
+                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.configurationsShowWeaponModelCharts" v-if="!isWeaponFrame2Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame2) && !isPayload2Disabled($store.state.editingBattlecruiserConfiguration.Payload2)">
                                 <weapon-model-chart
                                     :weaponFrame="$store.state.editingBattlecruiserConfiguration.WeaponFrame2"
                                     :payload="$store.state.editingBattlecruiserConfiguration.Payload2"
                                 ></weapon-model-chart>
                             </v-flex>
-                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.battlecruiserConfigurationsShowWeaponDamageCharts" v-if="!isWeaponFrame2Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame2) && !isPayload2Disabled($store.state.editingBattlecruiserConfiguration.Payload2)">
+                            <v-flex xs12 class="pt-0 pb-0" v-show="$store.state.configurationsShowWeaponDamageCharts" v-if="!isWeaponFrame2Disabled($store.state.editingBattlecruiserConfiguration.WeaponFrame2) && !isPayload2Disabled($store.state.editingBattlecruiserConfiguration.Payload2)">
                                 <weapon-damage-chart
                                     :weaponFrame="$store.state.editingBattlecruiserConfiguration.WeaponFrame2"
                                     :payload="$store.state.editingBattlecruiserConfiguration.Payload2"
@@ -3629,7 +3623,7 @@
                         </v-layout>
                     </v-flex>
                 </v-layout>
-                <v-layout wrap align-center v-show="$store.state.battlecruiserConfigurationsShowWeaponDamageCharts">
+                <v-layout wrap align-center v-show="$store.state.configurationsShowWeaponDamageCharts">
                     <v-flex grow class="pt-0">
                         <v-layout wrap align-center>
                             <v-flex shrink>
