@@ -119,6 +119,20 @@ const routes = [
                     authRequired: true,
                 },
             },
+            {
+                path: "/configurations/corvettes/:CorvetteConfigurationGuid",
+                name: "User Corvette Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserCorvetteConfiguration.vue"
+                    ),
+                props: (route) => ({
+                    corvetteConfigurationGuid: route.params.CorvetteConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
         ],
         meta: {
             authRequired: true,

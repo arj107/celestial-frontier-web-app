@@ -5,6 +5,8 @@ import DestroyerConfigurationRepository from "./DestroyerConfigurationRepository
 import DestroyerRepository from "./DestroyerRepository";
 import FrigateConfigurationRepository from "./FrigateConfigurationRepository";
 import FrigateRepository from "./FrigateRepository";
+import CorvetteConfigurationRepository from "./CorvetteConfigurationRepository";
+import CorvetteRepository from "./CorvetteRepository";
 import UsersRepository from "./UsersRepository";
 import ArmorRepository from "./ArmorRepository";
 import PointDefenseSystemRepository from "./PointDefenseSystemRepository";
@@ -21,6 +23,8 @@ export {
   DestroyerRepository,
   FrigateConfigurationRepository,
   FrigateRepository,
+  CorvetteConfigurationRepository,
+  CorvetteRepository,
   UsersRepository,
   ArmorRepository,
   PointDefenseSystemRepository,
