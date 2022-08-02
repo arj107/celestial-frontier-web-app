@@ -3,6 +3,8 @@ import BattlecruiserConfigurationRepository from "./BattlecruiserConfigurationRe
 import BattlecruiserRepository from "./BattlecruiserRepository";
 import DestroyerConfigurationRepository from "./DestroyerConfigurationRepository";
 import DestroyerRepository from "./DestroyerRepository";
+import FrigateConfigurationRepository from "./FrigateConfigurationRepository";
+import FrigateRepository from "./FrigateRepository";
 import UsersRepository from "./UsersRepository";
 import ArmorRepository from "./ArmorRepository";
 import PointDefenseSystemRepository from "./PointDefenseSystemRepository";
@@ -17,6 +19,8 @@ export {
   BattlecruiserRepository,
   DestroyerConfigurationRepository,
   DestroyerRepository,
+  FrigateConfigurationRepository,
+  FrigateRepository,
   UsersRepository,
   ArmorRepository,
   PointDefenseSystemRepository,

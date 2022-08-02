@@ -105,6 +105,20 @@ const routes = [
                     authRequired: true,
                 },
             },
+            {
+                path: "/configurations/frigates/:FrigateConfigurationGuid",
+                name: "User Frigate Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserFrigateConfiguration.vue"
+                    ),
+                props: (route) => ({
+                    frigateConfigurationGuid: route.params.FrigateConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
         ],
         meta: {
             authRequired: true,
