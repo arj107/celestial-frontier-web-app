@@ -133,6 +133,20 @@ const routes = [
                     authRequired: true,
                 },
             },
+            {
+                path: "/configurations/fighters/:FighterConfigurationGuid",
+                name: "User Fighter Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserFighterConfiguration.vue"
+                    ),
+                props: (route) => ({
+                    fighterConfigurationGuid: route.params.FighterConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
         ],
         meta: {
             authRequired: true,

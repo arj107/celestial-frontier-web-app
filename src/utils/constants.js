@@ -1,0 +1,1 @@
+export const EVASION_SCALAR = (1 / 65);

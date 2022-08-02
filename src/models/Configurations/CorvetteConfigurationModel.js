@@ -5,6 +5,7 @@ import { FuelSystemModel } from "../FuelSystem/FuelSystemModel";
 import { ThrusterModel } from "../Thruster/ThrusterModel";
 import { WeaponFrameModel } from "../WeaponFrame/WeaponFrameModel";
 import { PayloadModel } from "../Payload/PayloadModel";
+import { EVASION_SCALAR } from "../../utils/constants";
 
 export class CorvetteConfigurationModel {
   // the original object consumed directly from the API
@@ -422,7 +423,7 @@ export class CorvetteConfigurationModel {
     if (this.TotalMass == 0) {
       return 0;
     }
-    return this.ThrusterThrust / this.TotalMass;
+    return this.ThrusterThrust / (this.TotalMass * EVASION_SCALAR);
   };
   damagePerTurn = function () {
     if (this._corvetteConfiguration == null) {

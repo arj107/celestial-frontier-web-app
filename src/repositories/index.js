@@ -7,6 +7,8 @@ import FrigateConfigurationRepository from "./FrigateConfigurationRepository";
 import FrigateRepository from "./FrigateRepository";
 import CorvetteConfigurationRepository from "./CorvetteConfigurationRepository";
 import CorvetteRepository from "./CorvetteRepository";
+import FighterConfigurationRepository from "./FighterConfigurationRepository";
+import FighterRepository from "./FighterRepository";
 import UsersRepository from "./UsersRepository";
 import ArmorRepository from "./ArmorRepository";
 import PointDefenseSystemRepository from "./PointDefenseSystemRepository";
@@ -25,6 +27,8 @@ export {
   FrigateRepository,
   CorvetteConfigurationRepository,
   CorvetteRepository,
+  FighterConfigurationRepository,
+  FighterRepository,
   UsersRepository,
   ArmorRepository,
   PointDefenseSystemRepository,
