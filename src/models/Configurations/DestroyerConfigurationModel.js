@@ -749,16 +749,22 @@ export class DestroyerConfigurationModel {
         if (powerLevels[this.PointDefenseSystemPowerLevelText] > powerLevels[this.DestroyerPointDefenseSystemPowerLevelText]) {
             invalid = true;
         }
-        if (powerLevels[this.WeaponFrame1PowerLevelText] > powerLevels[this.DestroyerPointDefenseSystemPowerLevelText]) {
+        if (powerLevels[this.WeaponFrame1PowerLevelText] > powerLevels[this.DestroyerWeaponPowerLevelText]) {
             invalid = true;
         }
-        if (powerLevels[this.WeaponFrame2PowerLevelText] > powerLevels[this.DestroyerPointDefenseSystemPowerLevelText]) {
+        if (powerLevels[this.WeaponFrame2PowerLevelText] > powerLevels[this.DestroyerWeaponPowerLevelText]) {
             invalid = true;
         }
         if (powerLevels[this.Payload1PowerLevelText] > powerLevels[this.WeaponFrame1PowerLevelText]) {
             invalid = true;
         }
         if (powerLevels[this.Payload2PowerLevelText] > powerLevels[this.WeaponFrame2PowerLevelText]) {
+            invalid = true;
+        }
+        if (this.WeaponFrame1WeaponFrameTypeText !== this.Payload1WeaponFrameTypeText) {
+            invalid = true;
+        }
+        if (this.WeaponFrame2WeaponFrameTypeText !== this.Payload2WeaponFrameTypeText) {
             invalid = true;
         }
 

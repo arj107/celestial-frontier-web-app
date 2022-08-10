@@ -593,10 +593,13 @@ export class FighterConfigurationModel {
         if (powerLevels[this.PointDefenseSystemPowerLevelText] > powerLevels[this.FighterPointDefenseSystemPowerLevelText]) {
             invalid = true;
         }
-        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.FighterPointDefenseSystemPowerLevelText]) {
+        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.FighterWeaponPowerLevelText]) {
             invalid = true;
         }
         if (powerLevels[this.PayloadPowerLevelText] > powerLevels[this.WeaponFramePowerLevelText]) {
+            invalid = true;
+        }
+        if (this.WeaponFrameWeaponFrameTypeText !== this.PayloadWeaponFrameTypeText) {
             invalid = true;
         }
 

@@ -593,10 +593,13 @@ export class CorvetteConfigurationModel {
         if (powerLevels[this.PointDefenseSystemPowerLevelText] > powerLevels[this.CorvettePointDefenseSystemPowerLevelText]) {
             invalid = true;
         }
-        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.CorvettePointDefenseSystemPowerLevelText]) {
+        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.CorvetteWeaponPowerLevelText]) {
             invalid = true;
         }
         if (powerLevels[this.PayloadPowerLevelText] > powerLevels[this.WeaponFramePowerLevelText]) {
+            invalid = true;
+        }
+        if (this.WeaponFrameWeaponFrameTypeText !== this.PayloadWeaponFrameTypeText) {
             invalid = true;
         }
 

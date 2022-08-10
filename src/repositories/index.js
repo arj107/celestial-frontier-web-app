@@ -1,6 +1,8 @@
 import FleetRepository from "./FleetRepository";
 import BattlecruiserConfigurationRepository from "./BattlecruiserConfigurationRepository";
 import BattlecruiserRepository from "./BattlecruiserRepository";
+import CarrierConfigurationRepository from "./CarrierConfigurationRepository";
+import CarrierRepository from "./CarrierRepository";
 import DestroyerConfigurationRepository from "./DestroyerConfigurationRepository";
 import DestroyerRepository from "./DestroyerRepository";
 import FrigateConfigurationRepository from "./FrigateConfigurationRepository";
@@ -21,6 +23,8 @@ export {
   FleetRepository,
   BattlecruiserConfigurationRepository,
   BattlecruiserRepository,
+  CarrierConfigurationRepository,
+  CarrierRepository,
   DestroyerConfigurationRepository,
   DestroyerRepository,
   FrigateConfigurationRepository,

@@ -92,6 +92,20 @@ const routes = [
                 },
             },
             {
+                path: "/configurations/carriers/:CarrierConfigurationGuid",
+                name: "User Carrier Configuration",
+                component: () =>
+                    import(
+                        /* webpackChunkName: "home" */ "../views/Configurations/UserCarrierConfiguration.vue"
+                    ),
+                props: (route) => ({
+                    carrierConfigurationGuid: route.params.CarrierConfigurationGuid || null,
+                }),
+                meta: {
+                    authRequired: true,
+                },
+            },
+            {
                 path: "/configurations/destroyers/:DestroyerConfigurationGuid",
                 name: "User Destroyer Configuration",
                 component: () =>

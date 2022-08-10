@@ -2969,8 +2969,8 @@ export default {
         pointDefenseSystemOptions: [],
         fuelSystemOptions: [],
         thrusterOptions: [],
-        weaponFrame1Options: [],
-        payload1Options: [],
+        weaponFrameOptions: [],
+        payloadOptions: [],
 
         fightersLoading: false,
         armorsLoading: false,
@@ -3131,11 +3131,11 @@ export default {
             return filtered;
         },
         filteredWeaponFrameOptions() {
-            if (this.weaponFrame1Options.length <= 0) {
+            if (this.weaponFrameOptions.length <= 0) {
                 return [];
             }
             var filtered = [];
-            this.weaponFrame1Options.forEach((weaponFrame) => {
+            this.weaponFrameOptions.forEach((weaponFrame) => {
                 weaponFrame.disabled = this.isWeaponFrameDisabled(weaponFrame);
 
                 if (this.$store.state.weaponFrame1sShowOnlyFeasible) {
@@ -3150,11 +3150,11 @@ export default {
             return filtered;
         },
         filteredPayloadOptions() {
-            if (this.payload1Options.length <= 0) {
+            if (this.payloadOptions.length <= 0) {
                 return [];
             }
             var filtered = [];
-            this.payload1Options.forEach((payload) => {
+            this.payloadOptions.forEach((payload) => {
                 payload.disabled = this.isPayloadDisabled(payload);
 
                 if (this.$store.state.payload1sShowOnlyFeasible) {
@@ -3601,9 +3601,9 @@ export default {
                 .then((apiResponse) => {
                     console.log('apiResponse', apiResponse);
                     var responses = apiResponse.data;
-                    this.weaponFrame1Options = [];
+                    this.weaponFrameOptions = [];
                     for (var i = 0; i < responses.length; i++) {
-                        this.weaponFrame1Options.push(new WeaponFrameModel(responses[i]));
+                        this.weaponFrameOptions.push(new WeaponFrameModel(responses[i]));
                     }
                     this.weaponFramesLoading = false;
                 })
@@ -3651,12 +3651,12 @@ export default {
         },
         getWeaponFrameComponentOutlineColor(weaponFrameGuid) {
             if (weaponFrameGuid === this.fighterConfiguration.WeaponFrameGuid && weaponFrameGuid === this.$store.state.editingFighterConfiguration.WeaponFrameGuid) {
-                if (this.isWeaponFrameDisabled(this.weaponFrame1Options.find(option => option.WeaponFrameGuid === weaponFrameGuid))) {
+                if (this.isWeaponFrameDisabled(this.weaponFrameOptions.find(option => option.WeaponFrameGuid === weaponFrameGuid))) {
                     return `red`;
                 }
                 return `${'orange'}`;
             } else if (weaponFrameGuid === this.fighterConfiguration.WeaponFrameGuid) {
-                if (this.isWeaponFrameDisabled(this.weaponFrame1Options.find(option => option.WeaponFrameGuid === weaponFrameGuid))) {
+                if (this.isWeaponFrameDisabled(this.weaponFrameOptions.find(option => option.WeaponFrameGuid === weaponFrameGuid))) {
                     return `red`;
                 }
                 return `${'orange'}`;
@@ -3678,9 +3678,9 @@ export default {
                 .then((apiResponse) => {
                     console.log('apiResponse', apiResponse);
                     var responses = apiResponse.data;
-                    this.payload1Options = [];
+                    this.payloadOptions = [];
                     for (var i = 0; i < responses.length; i++) {
-                        this.payload1Options.push(new PayloadModel(responses[i]));
+                        this.payloadOptions.push(new PayloadModel(responses[i]));
                     }
                     this.payloadsLoading = false;
                 })
@@ -3726,12 +3726,12 @@ export default {
         },
         getPayloadComponentOutlineColor(payloadGuid) {
             if (payloadGuid === this.fighterConfiguration.PayloadGuid && payloadGuid === this.$store.state.editingFighterConfiguration.PayloadGuid) {
-                if (this.isPayloadDisabled(this.payload1Options.find(option => option.PayloadGuid === payloadGuid))) {
+                if (this.isPayloadDisabled(this.payloadOptions.find(option => option.PayloadGuid === payloadGuid))) {
                     return `red`;
                 }
                 return `${'orange'}`;
             } else if (payloadGuid === this.fighterConfiguration.PayloadGuid) {
-                if (this.isPayloadDisabled(this.payload1Options.find(option => option.PayloadGuid === payloadGuid))) {
+                if (this.isPayloadDisabled(this.payloadOptions.find(option => option.PayloadGuid === payloadGuid))) {
                     return `red`;
                 }
                 return `${'orange'}`;
@@ -3825,10 +3825,10 @@ export default {
                     this.$store.state.editingFighterConfiguration.setThruster(this.thrusterOptions.find(option => option.disabled === false));
                 }
                 if(this.isWeaponFrameDisabled(this.$store.state.editingFighterConfiguration.WeaponFrame)) {
-                    this.$store.state.editingFighterConfiguration.setWeaponFrame(this.weaponFrame1Options.find(option => option.disabled === false));
+                    this.$store.state.editingFighterConfiguration.setWeaponFrame(this.weaponFrameOptions.find(option => option.disabled === false));
                 }
                 if(this.isPayloadDisabled(this.$store.state.editingFighterConfiguration.Payload)) {
-                    this.$store.state.editingFighterConfiguration.setPayload(this.payload1Options.find(option => option.disabled === false));
+                    this.$store.state.editingFighterConfiguration.setPayload(this.payloadOptions.find(option => option.disabled === false));
                 }
                 return;
             }

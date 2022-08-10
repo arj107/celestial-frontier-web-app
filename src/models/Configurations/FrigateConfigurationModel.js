@@ -593,10 +593,13 @@ export class FrigateConfigurationModel {
         if (powerLevels[this.PointDefenseSystemPowerLevelText] > powerLevels[this.FrigatePointDefenseSystemPowerLevelText]) {
             invalid = true;
         }
-        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.FrigatePointDefenseSystemPowerLevelText]) {
+        if (powerLevels[this.WeaponFramePowerLevelText] > powerLevels[this.FrigateWeaponPowerLevelText]) {
             invalid = true;
         }
         if (powerLevels[this.PayloadPowerLevelText] > powerLevels[this.WeaponFramePowerLevelText]) {
+            invalid = true;
+        }
+        if (this.WeaponFrameWeaponFrameTypeText !== this.PayloadWeaponFrameTypeText) {
             invalid = true;
         }
 
