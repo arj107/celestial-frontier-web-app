@@ -439,7 +439,7 @@ export default {
 
     methods: {
         viewBattlecruiserConfiguration(battlecruiserConfiguration) {
-            this.$router.push({path: `${this.$router.history.current.path}/battlecruisers/${battlecruiserConfiguration.BattlecruiserConfigurationGuid}`});
+            this.$router.push({path: `/configurations/battlecruisers/${battlecruiserConfiguration.BattlecruiserConfigurationGuid}`});
         },
     },
 

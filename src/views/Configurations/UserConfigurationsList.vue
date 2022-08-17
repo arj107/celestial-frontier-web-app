@@ -2751,7 +2751,7 @@
 import { mapState } from 'vuex';
 import { BattlecruiserConfigurationRepository, CarrierConfigurationRepository, CorvetteConfigurationRepository, DestroyerConfigurationRepository, FighterConfigurationRepository, FrigateConfigurationRepository } from '../../repositories';
 import { UsersRepository } from '../../repositories';
-import { NewFleet } from '../../models/Fleets/NewFleet';
+import { FleetModel } from '../../models/Fleets/FleetModel';
 import { BattlecruiserConfigurationModel } from '../../models/Configurations/BattlecruiserConfigurationModel';
 import BattlecruiserConfigurationOverview from '../../components/Configurations/BattlecruiserConfigurationOverview.vue';
 import BattlecruiserOverview from '../../components/Battlecruiser/BattlecruiserOverview.vue';
@@ -2815,9 +2815,6 @@ export default {
         
     },
     methods: {
-        viewBattlecruiserConfiguration(battlecruiserConfiguration) {
-            this.$router.push({path: `${this.$router.history.current.path}/battlecruisers/${battlecruiserConfiguration.BattlecruiserConfigurationGuid}`});
-        },
         getUserBattlecruiserConfigurations() {
             this.$store.state.isLoading = true;
             this.battlecruiserConfigurationsLoading = true;
@@ -3004,7 +3001,7 @@ export default {
         fighterConfigurations: [],
         fighterConfigurationsLoading: false,
         selectedFleet: null,
-        newFleet: new NewFleet(),
+        newFleet: new FleetModel(),
         
     }),
     computed: {

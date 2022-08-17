@@ -42,32 +42,32 @@
                 </v-container>
                 <v-divider></v-divider>
             </template>
-            <template v-slot:item.User="{ item }">
+            <template v-slot:[`item.User`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.User.Username}}
                 </span>
             </template>
-            <template v-slot:item.Name="{ item }">
+            <template v-slot:[`item.Name`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.Name}}
                 </span>
             </template>
-            <template v-slot:item.FleetFighters="{ item }">
+            <template v-slot:[`item.FleetFighters`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.FleetFighters.length}}
                 </span>
             </template>
-            <template v-slot:item.FleetCorvettes="{ item }">
+            <template v-slot:[`item.FleetCorvettes`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.FleetCorvettes.length}}
                 </span>
             </template>
-            <template v-slot:item.FleetFrigates="{ item }">
+            <template v-slot:[`item.FleetFrigates`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.FleetFrigates.length}}
                 </span>
             </template>
-            <template v-slot:item.FleetDestroyers="{ item }">
+            <template v-slot:[`item.FleetDestroyers`]="{ item }">
                 <span class="font-weight-medium" tile flat>
                     {{item.FleetDestroyers.length}}
                 </span>
@@ -85,7 +85,7 @@
 import { mapState } from 'vuex';
 import { FleetRepository } from '../../repositories';
 import { UsersRepository } from '../../repositories';
-import { NewFleet } from '../../models/Fleets/NewFleet';
+import { FleetModel } from '../../models/Fleets/FleetModel';
 
 
 export default {
@@ -149,7 +149,7 @@ export default {
         newFleetMode: false,
         fleets: [],
         selectedFleet: null,
-        newFleet: new NewFleet(),
+        newFleet: new FleetModel(),
 
         fleetsHeaders: [
             // text: string

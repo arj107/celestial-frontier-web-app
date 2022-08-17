@@ -49,7 +49,7 @@
 import { mapState } from 'vuex';
 import { FleetRepository } from '../../repositories';
 import { UsersRepository } from '../../repositories';
-import { NewFleet } from '../../models/Fleets/NewFleet';
+import { FleetModel } from '../../models/Fleets/FleetModel';
 
 
 export default {
@@ -67,7 +67,7 @@ export default {
         
         fleets: [],
         selectedFleet: null,
-        newFleet: new NewFleet(),
+        newFleet: new FleetModel(),
         golfCourses: [],
         selectedGolfCourse: null,
         tees: [],

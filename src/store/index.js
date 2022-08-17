@@ -21,6 +21,1277 @@ const store = new Vuex.Store({
       },
     },
 
+    // FLEETS
+    selectedFleetBuilderPanel: [],
+    fleetBattlecruiserConfigurationsItemsPerPage: 6,
+    fleetBattlecruiserConfigurationsPageSync: 1,
+    fleetBattlecruiserConfigurationsPageCount: 1,
+    fleetBattlecruiserConfigurationsSearch: "",
+    fleetBattlecruiserConfigurationsSortBy: "",
+    fleetBattlecruiserConfigurationsSortDesc: true,
+    fleetBattlecruiserConfigurationsSortOptions: [
+        {
+            text: "None",
+            value: "",
+            icons: [],
+        },
+        {
+            text: "Name",
+            value: "Name",
+            icons: [],
+        },
+        {
+            text: "Class",
+            value: "BattlecruiserClass",
+            icons: [],
+        },
+        {
+            text: "Module Points Usage",
+            value: "TotalModulePointsUsage",
+            icons: [],
+        },
+        {
+            text: "Module Point Limit",
+            value: "BattlecruiserModulePointLimit",
+            icons: [],
+        },
+        {
+            text: "Hull Mass",
+            value: "BattlecruiserHullMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+    ],
+    fleetBattlecruiserConfigurationsHeaders: [
+        {
+            text: "Name",
+            value: "Name",
+            description: null,
+            align: 'left',
+            width: 200,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Class",
+            value: "Class",
+            description: "Class describes the model/design of the hull.",
+            align: 'left',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "MPU/MPL",
+            value: "TotalModulePointsUsage",
+            description: "Total Module Points Usage describes how many module points of available capacity have been used.",
+            align: 'center',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Mass",
+            value: "BattlecruiserHullMass",
+            description: "Hull Mass describes the overall mass of the Battlecruiser's Hull.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            description: "Total Mass describes the mass of the Battlecruiser's hull plus the mass of all attached components.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            description: "Total Crew describes the crew cost of the Battlecruiser plus the crew cost of all attached modules.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            description: "Total Heat Capacity describes the amount of heat units the entire ship can withstand before becomming overheated.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            description: "Maneuverability describes how quickly the entire ship can accelerate given its Total Mass and its Thruster's Thrust.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            description: "Fuel Consumption Rate describes how much fuel it costs for the ship to move 1 tile.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            description: "Fuel Capacity describes the maximimum amount of fuel the ship's Fuel System can contian.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            description: "Fuel Regeneration Rate describes how much fuel the ship's Fuel System restores per turn.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Description",
+            value: "BattlecruiserDescription",
+            description: null,
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: null,
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: false,
+            sortable: false,
+        },
+    ],
+
+    fleetCarrier1ConfigurationsItemsPerPage: 6,
+    fleetCarrier1ConfigurationsPageSync: 1,
+    fleetCarrier1ConfigurationsPageCount: 1,
+    fleetCarrier1ConfigurationsSearch: "",
+    fleetCarrier1ConfigurationsSortBy: "",
+    fleetCarrier1ConfigurationsSortDesc: true,
+    fleetCarrier1ConfigurationsSortOptions: [
+        {
+            text: "None",
+            value: "",
+            icons: [],
+        },
+        {
+            text: "Name",
+            value: "Name",
+            icons: [],
+        },
+        {
+            text: "Class",
+            value: "CarrierClass",
+            icons: [],
+        },
+        {
+            text: "Fighter Bays",
+            value: "CarrierFighterBays",
+            icons: [],
+        },
+        {
+            text: "Corvette Bays",
+            value: "CarrierCorvetteBays",
+            icons: [],
+        },
+        {
+            text: "Frigate Bays",
+            value: "CarrierFrigateBays",
+            icons: [],
+        },
+        {
+            text: "Destroyer Bays",
+            value: "CarrierDestroyerBays",
+            icons: [],
+        },
+        {
+            text: "Module Points Usage",
+            value: "TotalModulePointsUsage",
+            icons: [],
+        },
+        {
+            text: "Module Point Limit",
+            value: "CarrierModulePointLimit",
+            icons: [],
+        },
+        {
+            text: "Hull Mass",
+            value: "CarrierHullMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+    ],
+    fleetCarrier1ConfigurationsHeaders: [
+        {
+            text: "Name",
+            value: "Name",
+            description: null,
+            align: 'left',
+            width: 200,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Class",
+            value: "Class",
+            description: "Class describes the model/design of the hull.",
+            align: 'left',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Bays",
+            value: "CarrierBays",
+            description: "Bays describes how many spaceships of each type this Carrier can accommodate. Hover over the numbers to see corresponding spaceship type.",
+            align: 'center',
+            width: 150,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "MPU/MPL",
+            value: "TotalModulePointsUsage",
+            description: "Total Module Points Usage describes how many module points of available capacity have been used.",
+            align: 'center',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Mass",
+            value: "CarrierHullMass",
+            description: "Hull Mass describes the overall mass of the Carrier's Hull.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            description: "Total Mass describes the mass of the Carrier's hull plus the mass of all attached components.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            description: "Total Crew describes the crew cost of the Carrier plus the crew cost of all attached modules.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            description: "Total Heat Capacity describes the amount of heat units the entire ship can withstand before becomming overheated.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            description: "Maneuverability describes how quickly the entire ship can accelerate given its Total Mass and its Thruster's Thrust.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            description: "Fuel Consumption Rate describes how much fuel it costs for the ship to move 1 tile.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            description: "Fuel Capacity describes the maximimum amount of fuel the ship's Fuel System can contian.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            description: "Fuel Regeneration Rate describes how much fuel the ship's Fuel System restores per turn.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Description",
+            value: "CarrierDescription",
+            description: null,
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: null,
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: false,
+            sortable: false,
+        },
+    ],
+
+    fleetCarrier2ConfigurationsItemsPerPage: 6,
+    fleetCarrier2ConfigurationsPageSync: 1,
+    fleetCarrier2ConfigurationsPageCount: 1,
+    fleetCarrier2ConfigurationsSearch: "",
+    fleetCarrier2ConfigurationsSortBy: "",
+    fleetCarrier2ConfigurationsSortDesc: true,
+    fleetCarrier2ConfigurationsSortOptions: [
+        {
+            text: "None",
+            value: "",
+            icons: [],
+        },
+        {
+            text: "Name",
+            value: "Name",
+            icons: [],
+        },
+        {
+            text: "Class",
+            value: "CarrierClass",
+            icons: [],
+        },
+        {
+            text: "Fighter Bays",
+            value: "CarrierFighterBays",
+            icons: [],
+        },
+        {
+            text: "Corvette Bays",
+            value: "CarrierCorvetteBays",
+            icons: [],
+        },
+        {
+            text: "Frigate Bays",
+            value: "CarrierFrigateBays",
+            icons: [],
+        },
+        {
+            text: "Destroyer Bays",
+            value: "CarrierDestroyerBays",
+            icons: [],
+        },
+        {
+            text: "Module Points Usage",
+            value: "TotalModulePointsUsage",
+            icons: [],
+        },
+        {
+            text: "Module Point Limit",
+            value: "CarrierModulePointLimit",
+            icons: [],
+        },
+        {
+            text: "Hull Mass",
+            value: "CarrierHullMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+        },
+    ],
+    fleetCarrier2ConfigurationsHeaders: [
+        {
+            text: "Name",
+            value: "Name",
+            description: null,
+            align: 'left',
+            width: 200,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Class",
+            value: "Class",
+            description: "Class describes the model/design of the hull.",
+            align: 'left',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Bays",
+            value: "CarrierBays",
+            description: "Bays describes how many spaceships of each type this Carrier can accommodate. Hover over the numbers to see corresponding spaceship type.",
+            align: 'center',
+            width: 150,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "MPU/MPL",
+            value: "TotalModulePointsUsage",
+            description: "Total Module Points Usage describes how many module points of available capacity have been used.",
+            align: 'center',
+            width: 0,
+            icons: [],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Hull Mass",
+            value: "CarrierHullMass",
+            description: "Hull Mass describes the overall mass of the Carrier's Hull.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Mass",
+            value: "TotalMass",
+            description: "Total Mass describes the mass of the Carrier's hull plus the mass of all attached components.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weight",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Crew Cost",
+            value: "TotalCrewCost",
+            description: "Total Crew describes the crew cost of the Carrier plus the crew cost of all attached modules.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-account-group",
+                    size: null,
+                    iconColor: "light-blue",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Total Heat Capacity",
+            value: "TotalHeatCapacity",
+            description: "Total Heat Capacity describes the amount of heat units the entire ship can withstand before becomming overheated.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-thermometer-alert",
+                    size: null,
+                    iconColor: "red",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Maneuverability",
+            value: "Maneuverability",
+            description: "Maneuverability describes how quickly the entire ship can accelerate given its Total Mass and its Thruster's Thrust.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-weather-windy",
+                    size: null,
+                    iconColor: "green",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Consumption Rate",
+            value: "FuelSystemFuelConsumptionRate",
+            description: "Fuel Consumption Rate describes how much fuel it costs for the ship to move 1 tile.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-minus-thick",
+                    size: "x-small",
+                    iconColor: "red",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-hexagon-outline",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Capacity",
+            value: "FuelSystemFuelCapacity",
+            description: "Fuel Capacity describes the maximimum amount of fuel the ship's Fuel System can contian.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: "mdi-fuel",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Fuel Regeneration Rate",
+            value: "FuelSystemFuelRegenerationRate",
+            description: "Fuel Regeneration Rate describes how much fuel the ship's Fuel System restores per turn.",
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    order: 0,
+                    icon: "mdi-plus-thick",
+                    size: "x-small",
+                    iconColor: "green",
+                    cssClass: null
+                },
+                {
+                    order: 3,
+                    icon: "mdi-arrow-u-down-right",
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 2,
+                    icon: "mdi-slash-forward",
+                    size: "small",
+                    iconColor: null,
+                    cssClass: null
+                },
+                {
+                    order: 1,
+                    icon: "mdi-fire",
+                    size: null,
+                    iconColor: "orange",
+                    cssClass: null
+                },
+            ],
+            divider: true,
+            sortable: false,
+        },
+        {
+            text: "Description",
+            value: "CarrierDescription",
+            description: null,
+            align: 'center',
+            width: 0,
+            icons: [
+                {
+                    icon: null,
+                    size: null,
+                    iconColor: null,
+                    cssClass: null
+                },
+            ],
+            divider: false,
+            sortable: false,
+        },
+    ],
+
     // CONFIGURATIONS
     selectedConfigurationPanel: [],
     configurationsCondensedView: true,
@@ -87,7 +1358,7 @@ const store = new Vuex.Store({
         },
         {
             text: "Hull Mass",
-            value: "HullMass",
+            value: "BattlecruiserHullMass",
             icons: [
                 {
                     icon: "mdi-weight",
@@ -455,7 +1726,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    battlecruiserConfigurationsSelectedComponentPanel: null,
     battlecruiserConfigurationsItemsPerPage: 6,
     battlecruiserConfigurationsPageSync: 1,
     battlecruiserConfigurationsPageCount: 1,
@@ -753,7 +2023,7 @@ const store = new Vuex.Store({
         },
         {
             text: "Hull Mass",
-            value: "HullMass",
+            value: "CarrierHullMass",
             icons: [
                 {
                     icon: "mdi-weight",
@@ -1131,7 +2401,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    carrierConfigurationsSelectedComponentPanel: null,
     carrierConfigurationsItemsPerPage: 6,
     carrierConfigurationsPageSync: 1,
     carrierConfigurationsPageCount: 1,
@@ -1451,7 +2720,7 @@ const store = new Vuex.Store({
         },
         {
             text: "Hull Mass",
-            value: "HullMass",
+            value: "DestroyerHullMass",
             icons: [
                 {
                     icon: "mdi-weight",
@@ -1836,7 +3105,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    destroyerConfigurationsSelectedComponentPanel: null,
     destroyerConfigurationsItemsPerPage: 6,
     destroyerConfigurationsPageSync: 1,
     destroyerConfigurationsPageCount: 1,
@@ -2155,7 +3423,7 @@ const store = new Vuex.Store({
         },
         {
             text: "Hull Mass",
-            value: "HullMass",
+            value: "FrigateHullMass",
             icons: [
                 {
                     icon: "mdi-weight",
@@ -2540,7 +3808,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    frigateConfigurationsSelectedComponentPanel: null,
     frigateConfigurationsItemsPerPage: 6,
     frigateConfigurationsPageSync: 1,
     frigateConfigurationsPageCount: 1,
@@ -2859,7 +4126,7 @@ const store = new Vuex.Store({
         },
         {
             text: "Hull Mass",
-            value: "HullMass",
+            value: "CorvetteHullMass",
             icons: [
                 {
                     icon: "mdi-weight",
@@ -3244,7 +4511,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    corvetteConfigurationsSelectedComponentPanel: null,
     corvetteConfigurationsItemsPerPage: 6,
     corvetteConfigurationsPageSync: 1,
     corvetteConfigurationsPageCount: 1,
@@ -3948,7 +5214,6 @@ const store = new Vuex.Store({
             sortable: false,
         },
     ],
-    fighterConfigurationsSelectedComponentPanel: null,
     fighterConfigurationsItemsPerPage: 6,
     fighterConfigurationsPageSync: 1,
     fighterConfigurationsPageCount: 1,
@@ -6372,6 +7637,7 @@ const store = new Vuex.Store({
     payload2sSortBy: "",
     payload2sSortDesc: true,
     payload2sShowOnlyFeasible: false,
+
   },
   mutations: {
     setUser(state, userAuthToken) {
